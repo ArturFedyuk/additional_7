@@ -1,9 +1,13 @@
 module.exports = function solveSudoku(matrix) {
-    for (let row = 0; row < 9; row++) {
-        for (let col = 0; col < 9; col++) {
-            if (matrix[row][col] === 0) {
+    for (let row = 0; row < 9; row++) 
+    {
+        for (let col = 0; col < 9; col++) 
+        {
+            if (matrix[row][col] === 0) 
+            {
                 let candidates = getCandidates(row, col);
-                for (let candidate of candidates) {
+                for (let candidate of candidates) 
+                {
                     matrix[row][col] = candidate;
                     let attempt = solveSudoku(matrix);
                     if (attempt) return attempt;
@@ -15,7 +19,8 @@ module.exports = function solveSudoku(matrix) {
     }
     return matrix;
 
-    function getCandidates(row, col) {
+    function getCandidates(row, col) 
+    {
         let candidates = [1, 2, 3, 4, 5, 6, 7, 8, 9];
         let result = [];
         let area = {
@@ -23,7 +28,8 @@ module.exports = function solveSudoku(matrix) {
             col: Math.floor(col / 3) * 3,
         };
 
-        for (let i = 0; i < 9; i++) {
+        for (let i = 0; i < 9; i++) 
+        {
             result.push([matrix[row][i], matrix[i][col], matrix[area.row + i % 3][area.col + Math.floor(i / 3)]])
         }
 
